@@ -6,15 +6,15 @@ const Navbar = ({onClick}) => {
       <div className="flex">
         <ul className="flex justify-between items-center space-x-10 text-2xl font-semibold ">
           <li className="px-8 py-3 text-[#3a3b3a] rounded-2xl">
-            <a href="">Cinta Coding</a>
+            <p >Cinta Coding</p>
           </li>
         </ul>
       </div>
 
       <div className="flex justify-between items-center space-x-5 uppercase text-xl font-semibold text-black">
-        <a href="/#" className="px-8 py-3 bg-[#6c9ef0] text-white rounded-xl" onClick={onClick}>
+        <button className="px-8 py-3 bg-[#6c9ef0] text-white rounded-xl" onClick={onClick}>
           Login
-        </a>
+        </button>
       </div>
     </header>
   );

@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import IllustrationImg from '../assets/illustrastion.jpg'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { getUserList } from '../store/userSlicer'
 
 const LandingPage = () => {
+ const navigate = useNavigate()
+ const dispatch = useDispatch() 
+ 
+ 
+ useEffect(() => {
+  dispatch(getUserList())
+ }, [dispatch])
+
   return (
     <div>
-      <Navbar />
+      <Navbar onClick={() => navigate('/login')}/>
       <div className=" flex items-center justify-center">
         <img
           src={IllustrationImg}

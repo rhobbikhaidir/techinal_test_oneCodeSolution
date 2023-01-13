@@ -23,25 +23,40 @@ const Login = () => {
     dispatch(getUserList());
   }, [dispatch]);
 
-  console.log(userList, "ini userList");
 
   const loginHandler = (e) => {
     e.preventDefault();
-    const findUser = userList.find((item) => {
+    userList.find((item) => {
       if (item.email === (email && password)) {
+        sessionStorage.setItem('isLogged', true)
+        dispatch(
+          setValue({
+            key: "username",
+            value: item.username,
+          })
+        );
+        dispatch(
+          setValue({
+            key: "idUser",
+            value: item.id,
+          })
+        );
+        dispatch(
+          setValue({
+            key: "isLogged",
+            value: true,
+          })
+        );
+
         swal.success("berhasil Login");
         return item;
       } else if (item.email !== (email && password)) {
         return swal.error("Email atau password yang anda masukan salah");
       }
+      return item
     });
 
-    dispatch(
-      setValue({
-        key: "userLogin",
-        value: findUser,
-      })
-    );
+   
 
 
     navigate('/dashboard')
